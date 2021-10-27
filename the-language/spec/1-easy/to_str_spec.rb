@@ -22,7 +22,7 @@ RSpec.describe 'to_str' do
   end
 
   it "can't use a normal object in place of a string using to_s" do
-    expect { File.exist?(NotLikeAString.new) }.to raise_error(__)
+    expect { File.exist?(NotLikeAString.new) }.to raise_error(TypeError)
   end
 
   it 'also returns a string representation using to_str' do
