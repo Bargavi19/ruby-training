@@ -27,9 +27,8 @@ RSpec.describe 'to_str' do
 
   it 'also returns a string representation using to_str' do
     like_a_string = LikeAString.new
-
-    expect(like_a_string.to_str).to eq('string-like')
-  end
+   expect(like_a_string.to_str).to eq('string-like')
+   end
 
   it 'can be used in place of a string using to_str' do
     expect(File.exist?(LikeAString.new)).to eq(false)
