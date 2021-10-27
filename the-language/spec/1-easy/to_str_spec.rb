@@ -18,7 +18,7 @@ RSpec.describe 'to_str' do
   it 'returns a string representation using to_s' do
     not_like_a_string = NotLikeAString.new
 
-    expect(not_like_a_string.to_s).to eq(__)
+    expect(not_like_a_string.to_s).to eq('non-string-like')
   end
 
   it "can't use a normal object in place of a string using to_s" do
@@ -28,7 +28,7 @@ RSpec.describe 'to_str' do
   it 'also returns a string representation using to_str' do
     like_a_string = LikeAString.new
 
-    expect(like_a_string.to_str).to eq(__)
+    expect(like_a_string.to_str).to eq()
   end
 
   it 'can be used in place of a string using to_str' do
