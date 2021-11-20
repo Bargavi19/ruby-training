@@ -19,7 +19,7 @@ RSpec.describe 'sandwich code' do
   end
 
   it 'can count lines in file' do
-    expect(count_lines(EXAMPLE_FILE)).to eq(__)
+    expect(count_lines(EXAMPLE_FILE)).to eq(4)
   end
 
   def find_line(file_name)
@@ -32,7 +32,7 @@ RSpec.describe 'sandwich code' do
   end
 
   it 'can find a line' do
-    expect(find_line(EXAMPLE_FILE)).to eq(__)
+    expect(find_line(EXAMPLE_FILE)).to eq("test\n")
   end
 
   # What do you notice with `find_line` & `count_lines`? How are they similar?
