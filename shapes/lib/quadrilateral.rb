@@ -7,11 +7,18 @@ def quadrilateral(a, b, c, d)
   end
   case angles.uniq.size
   when 1 then [:square, :rectangle]
-  when 2 then [:parallelogram, :rhombus]
-  when 4 then [:quadrilateral]
+  when 2 .. 4
+    a=[a, b, c, d]
+    first = a.first
+    o = first + a[2]
+    t = first + a[3]
+    if o == 180 || t == 180
+      [:parallelogram, :rhombus]
+    else
+      [:quadrilateral]
+    end
   end
 end
-
 # Error class used in invalid_quadrilateral_spec. No need to change this code.
 class QuadrilateralError < StandardError
 end
