@@ -12,10 +12,10 @@ def quadrilateral(a, b, c, d)
     first = a.first
     o = first + a[2]
     t = first + a[3]
-    if o == 180 || t == 180
+    if [o, t].include? 180
       [:parallelogram, :rhombus]
     else
-      [:quadrilateral]
+       [:quadrilateral]
     end
   end
 end
