@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class Greed
-  def score
-    raise GreedError
+  def score (a)
+    if a.is_a?(Array)
+      return 0
+    end
   end
 end
 
