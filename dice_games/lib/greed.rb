@@ -20,6 +20,12 @@ class Greed
         else
         return 1000
         end
+      elsif a.length == 5
+        if a.include?(6)
+          return 50
+        else
+          return 150
+        end
       else
         return 0
       end
