@@ -21,16 +21,26 @@ class Greed
         return 1000
         end
       elsif a.length == 5
-        if a.include?(6)
-          return 50
-        elsif a.include?(1) && a.count(1) == 1
+        if a.include?(6) && a.count(6) == 1
+          if a.include?(1)
+          return 1050
+          else return 50
+          end
+        elsif a.include?(1)
+          return 1200 if a.count(1) ==5
+          if a.count(1) == 1
           return 150
+          else
+            if a.count(4) == 3
+            return 600
+            else
+              return 800
+            end
+          end
         elsif a.count(4) == 4 && a.count(5) == 1
           return 450
         elsif a.count(5) == 4 && a.count(4) == 1
           return 550
-        else
-          return 600
         end
       else
         return 0
