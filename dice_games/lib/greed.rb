@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 class Greed
-  def elif(i)
-    # code here
-  end
-
   def score (a)
     if a.is_a?(Array)
       if a == [5]
