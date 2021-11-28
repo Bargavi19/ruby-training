@@ -1,9 +1,19 @@
 # frozen_string_literal: true
 
 class Greed
-def score (a)
+  def elif(i)
+    # code here
+  end
+
+  def score (a)
     if a.is_a?(Array)
-      return 0
+      if a == [5]
+       return 50
+      elsif a == [1]
+       return 100
+      else
+        return 0
+      end
     end
   end
 end
