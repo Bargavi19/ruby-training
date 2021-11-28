@@ -6,6 +6,6 @@ class Dice
     @values = []
     # using instance variable so that it can be used across methods
     # declaring instance variable as array. If we didn't, then it will return as array
-    n.times { |roll| @values << rand(1..6) }
+    n.times { @values << rand(1..6) }
   end
 end
