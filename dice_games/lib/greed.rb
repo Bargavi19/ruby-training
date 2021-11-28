@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 class Greed
-  def elif(i)
-    # code here
-  end
-
   def score (a)
     if a.is_a?(Array)
       if a == [5]
@@ -41,13 +37,11 @@ class Greed
           return 450
         elsif a.count(5) == 4 && a.count(4) == 1
           return 550
-        end
       else
         return 0
       end
     end
   end
 end
-
 class GreedError < StandardError
 end
