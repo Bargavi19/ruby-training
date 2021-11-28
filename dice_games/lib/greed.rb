@@ -44,6 +44,5 @@ class Greed
     end
   end
 end
-
 class GreedError < StandardError
 end
