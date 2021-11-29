@@ -5,7 +5,7 @@ class Dice
   def roll (n = 1)
     @values = []
     # using instance variable so that it can be used across methods
-    # declaring instance variable as array. If we didn't, then it will return as array
+    # declaring instance variable as array. If we didn't, then it will return the values as nil
     n.times { @values << rand(1..6) }
   end
 end
