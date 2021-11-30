@@ -42,10 +42,15 @@ RSpec.describe Dice do
     dice.roll(5)
     first_time = dice.values
 
-    dice.roll(5)
-    second_time = dice.values
+    dice.roll1(5)
+    second_time = dice.newvalues
 
     expect(second_time).not_to eq(first_time), 'Two rolls should not be equal'
+
+    dice.two_rolls_equal
+    equal = dice.e
+
+    expect(equal).to eq(true)
 
     # THINK ABOUT IT:
     #
