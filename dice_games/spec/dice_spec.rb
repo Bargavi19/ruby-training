@@ -50,7 +50,11 @@ RSpec.describe Dice do
     dice.two_rolls_equal
     equal = dice.e
 
-    expect(equal).to eq(true)
+    if  equal == true
+      it 'runs when two rolls are equal' do
+        expect(equal).to eq(true)
+      end
+    end
 
     # THINK ABOUT IT:
     #
