@@ -29,4 +29,11 @@ class Bottles
     @a6 = "Go to the store and buy some more, 99 bottles of beer on the wall."
     expected =  [a5, a6].join("\n") + "\n"
   end
+  def verses(start_value, end_value)
+    expected = []
+    (end_value..start_value).each do |n|
+      expected << verse(n) + "\n"
+    end
+    expected1 = expected.sort! .reverse.join("")
+  end
 end
