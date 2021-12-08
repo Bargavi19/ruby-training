@@ -15,6 +15,19 @@ class Bottles
       expected = [a0, a1].join("\n") + "\n"
     end
   end
+  def verses(start_value, end_value)
+    expected = []
+    (end_value..start_value).each do |n|
+      expected << verse(n) + "\n"
+    end
+    expected1 = expected.sort! .reverse.join("")
+  end
+  def sing
+    verses(99, 0)
+  end
+  
+  private
+
   def verse2
     @a2 ="Take one down and pass it around, 1 bottle of beer on the wall."
     expected = [a0, a2].join("\n") + "\n"
@@ -28,15 +41,5 @@ class Bottles
     @a5 = "No more bottles of beer on the wall, no more bottles of beer."
     @a6 = "Go to the store and buy some more, 99 bottles of beer on the wall."
     expected =  [a5, a6].join("\n") + "\n"
-  end
-  def verses(start_value, end_value)
-    expected = []
-    (end_value..start_value).each do |n|
-      expected << verse(n) + "\n"
-    end
-    expected1 = expected.sort! .reverse.join("")
-  end
-  def sing
-    verses(99, 0)
   end
 end
