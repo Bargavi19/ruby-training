@@ -36,4 +36,7 @@ class Bottles
     end
     expected1 = expected.sort! .reverse.join("")
   end
+  def sing
+    verses(99, 0)
+  end
 end
