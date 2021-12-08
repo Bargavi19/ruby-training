@@ -12,7 +12,7 @@ class Bottles
     elsif number_of_bottles == 0
       private_verse0
     else
-      expected = [a0, a1].join("\n") + "\n"
+      [a0, a1].join("\n") + "\n"
     end
   end
   def verses(start_value, end_value)
@@ -20,7 +20,7 @@ class Bottles
     (end_value..start_value).each do |n|
       expected << verse(n) + "\n"
     end
-    expected1 = expected.sort! .reverse.join("")
+    expected.sort! .reverse.join("")
   end
   def sing
     verses(99, 0)
@@ -30,16 +30,16 @@ class Bottles
 
   def private_verse2
     @a2 ="Take one down and pass it around, 1 bottle of beer on the wall."
-    expected = [a0, a2].join("\n") + "\n"
+    [a0, a2].join("\n") + "\n"
   end
   def private_verse1
     @a3 ="1 bottle of beer on the wall, 1 bottle of beer."
     @a4 ="Take it down and pass it around, no more bottles of beer on the wall."
-    expected = [a3, a4].join("\n") + "\n"
+    [a3, a4].join("\n") + "\n"
   end
   def private_verse0
     @a5 = "No more bottles of beer on the wall, no more bottles of beer."
     @a6 = "Go to the store and buy some more, 99 bottles of beer on the wall."
-    expected =  [a5, a6].join("\n") + "\n"
+    [a5, a6].join("\n") + "\n"
   end
 end
