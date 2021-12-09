@@ -163,14 +163,9 @@ Humpty dumpty had a great fall
   end
 
   it 'represents single characters as strings' do
-<<<<<<< HEAD
+    # Again this isn't used very often
     expect(?a).to eq("a")
     expect(?a == 97).to eq(false)
-=======
-    # Again this isn't used very often
-    expect(?a).to eq(__)
-    expect(?a == 97).to eq(__)
->>>>>>> upstream/main
   end
 
   it 'can split a string' do
