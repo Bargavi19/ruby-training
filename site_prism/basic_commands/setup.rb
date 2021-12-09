@@ -3,14 +3,12 @@
 require 'bundler'
 Bundler.setup
 
-require 'ca_testing/drivers'
+require 'automation_helpers/drivers/local'
 require 'capybara'
 require 'capybara/dsl'
 require 'site_prism'
 require 'selenium-webdriver'
 require 'webdrivers'
-require 'rainbow/refinement'
-
 
 class Setup
   def initialize
@@ -44,7 +42,7 @@ class Setup
   end
 
   def setup_driver
-    CaTesting::Drivers::Local.new(browser).register
+    AutomationHelpers::Drivers::Local.new(browser).register
   end
 
   def browser
