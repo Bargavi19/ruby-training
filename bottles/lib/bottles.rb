@@ -1,19 +1,12 @@
 # frozen_string_literal: true
-
 class Bottles
-  attr_reader :a0, :a1,:a2, :a3, :a4, :a5, :a6
+  attr_reader :a7, :a8
   def verse(number_of_bottles)
-    @a0 ="#{number_of_bottles} bottles of beer on the wall, #{number_of_bottles} bottles of beer."
-    @a1 = "Take one down and pass it around, #{number_of_bottles - 1} bottles of beer on the wall."
-    if number_of_bottles == 2
-      private_verse2
-    elsif number_of_bottles == 1
-      private_verse1
-    elsif number_of_bottles == 0
-      private_verse0
-    else
+      @a7 = "bottles of beer on the wall, bottles of beer."
+      @a8 = "Take one down and pass it around, bottles of beer on the wall."
+      a0 =  private_first_line(a7, number_of_bottles)
+      a1 =  private_second_line(a8, number_of_bottles)
       [a0, a1].join("\n") + "\n"
-    end
   end
   def verses(start_value, end_value)
     expected = []
@@ -28,18 +21,25 @@ class Bottles
 
   private
 
-  def private_verse2
-    @a2 ="Take one down and pass it around, 1 bottle of beer on the wall."
-    [a0, a2].join("\n") + "\n"
+  def private_first_line(str_1, n)
+    if n == 1
+    str_1.gsub(/bo\w+/, "1 bottle")
+    elsif n == 0
+      str_1.sub(/bo\w+/, "No more bottles").sub(/, bo\w*/, ", no more bottles")
+    else
+      str_1.gsub(/bo\w*/, "#{n} bottles")
+    end
   end
-  def private_verse1
-    @a3 ="1 bottle of beer on the wall, 1 bottle of beer."
-    @a4 ="Take it down and pass it around, no more bottles of beer on the wall."
-    [a3, a4].join("\n") + "\n"
-  end
-  def private_verse0
-    @a5 = "No more bottles of beer on the wall, no more bottles of beer."
-    @a6 = "Go to the store and buy some more, 99 bottles of beer on the wall."
-    [a5, a6].join("\n") + "\n"
+  
+  def private_second_line(str_2, n)
+    if n == 1
+      str_2.sub(/on\w+/, "it").sub(/bo\w+/, "no more bottles")
+    elsif n == 0
+      str_2.sub(/Take one down and pass it around/,"Go to the store and buy some more").sub(/bo\w*/, "99 bottles")
+    elsif n == 2
+      str_2.sub(/bo\w*/, "1 bottle")
+    else
+      str_2.gsub(/bo\w*/, "#{n-1} bottles")
+    end
   end
 end
