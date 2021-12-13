@@ -35,7 +35,7 @@ class Bottles
     if n == 1
       str_2.sub(/on\w+/, "it").sub(/bo\w+/, "no more bottles")
     elsif n == 0
-      str_2.sub(/Take one down and pass it around/,"Go to the store and buy some more").sub(/bo\w*/, "99 bottles")
+       str_2.sub(/.*,/,"Go to the store and buy some more, 99")
     elsif n == 2
       str_2.sub(/bo\w*/, "1 bottle")
     else
