@@ -8,6 +8,7 @@ class Bottles
       a1 =  private_second_line(a8, number_of_bottles)
       [a0, a1].join("\n") + "\n"
   end
+
   def verses(start_value, end_value)
     expected = []
     (end_value..start_value).each do |n|
@@ -15,6 +16,7 @@ class Bottles
     end
     expected.sort! .reverse.join("")
   end
+
   def sing
     verses(99, 0)
   end
