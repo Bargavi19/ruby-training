@@ -4,7 +4,7 @@ class LCD
   attr_reader :digit, :lcdStates, :lcdDisplayData
   def initialize(number)
     @digit = number
-    @lcdStates = %w[HORIZONTAL VERTICAL VERTICAL DONE]
+    @lcdStates = %w[HORIZONTAL VERTICAL VERTICAL]
     @lcdDisplayData = {
       0 => [1, 3, 4]
     }
@@ -12,25 +12,18 @@ class LCD
 
   def render
     if digit == 0
-      states = lcdStates.reverse
-      0.upto(lcdStates.length) do |i|
-        case states.pop
-        when "HORIZONTAL"
-          line = ""
-          line += horizontal_segment(lcdDisplayData[digit][i])
-        when "VERTICAL"
-          line = ""
-          line += vertical_segment(lcdDisplayData[digit][i])
-        else
-          break
-        end
-        print line + "\n"
+      e = lcdStates.each_with_index.map do |w, index|
+             if w ==  "HORIZONTAL"
+                horizontal_segment(lcdDisplayData[digit][index]) + "\n"
+             elsif w == "VERTICAL"
+                vertical_segment(lcdDisplayData[digit][index]) + "\n"
+             end
       end
+      e.join("")
     end
   end
 
-
-   def horizontal_segment(type)
+  def horizontal_segment(type)
       case type
       when 1
         return  " _ "
