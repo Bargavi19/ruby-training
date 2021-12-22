@@ -6,21 +6,20 @@ class LCD
     @digit = number
     @lcdStates = %w[HORIZONTAL VERTICAL VERTICAL]
     @lcdDisplayData = {
-      0 => [1, 3, 4]
+      0 => [1, 3, 4],
+      6 => [1, 2, 4]
     }
   end
 
   def render
-    if digit == 0
-      e = lcdStates.each_with_index.map do |w, index|
+    e = lcdStates.each_with_index.map do |w, index|
              if w ==  "HORIZONTAL"
                 horizontal_segment(lcdDisplayData[digit][index]) + "\n"
              elsif w == "VERTICAL"
                 vertical_segment(lcdDisplayData[digit][index]) + "\n"
              end
-      end
-      e.join("")
     end
+      e.join("")
   end
 
   def horizontal_segment(type)
@@ -37,7 +36,7 @@ class LCD
       when 1
         return " "+ "|"
       when 2
-        return " | " + " "
+        return "|_" + " "
       when 3
         return "| |"
       when 4
