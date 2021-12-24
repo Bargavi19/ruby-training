@@ -25,7 +25,7 @@ class LCD
     if individual_digits.length == 1
     e.transpose.join("\n") + "\n"
     else
-      e.transpose.join("")
+     e.transpose.map { |element|  element.push("\n") }.join("")
     end
   end
 
@@ -44,14 +44,14 @@ class LCD
       when 1
         return  " _ "
       else
-        return " "
+        return "   "
       end
    end
 
    def vertical_segment(type)
       case type
       when 1
-        return " "+ " | "
+        return " "+ " |"
       when 2
         return "|_" + " "
       when 3
