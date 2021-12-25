@@ -21,16 +21,12 @@ class LCD
 
   def render
     individual_digits = digit.digits.reverse
-    e = individual_digits.map{ |i| form_digits(i)}
-    if individual_digits.length == 1
-    e.transpose.join("\n") + "\n"
-    else
-     e.transpose.map { |element|  element.push("\n") }.join("")
-    end
+    e = individual_digits.map{ |i| display_lcd_digits(i) }
+    e.transpose.map { |lcd_digits|  lcd_digits.push("\n") }.join("")
   end
 
-  def form_digits(individual_digit)
-    lcdStates.each_with_index.map do |w, index|
+  def display_lcd_digits(individual_digit)
+    lcdStates.map.with_index do |w, index|
       if w ==  "HORIZONTAL"
         horizontal_segment(lcdDisplayData[individual_digit][index])
       elsif w == "VERTICAL"
@@ -58,10 +54,8 @@ class LCD
         return "| |"
       when 4
         return "|_|"
-      when 5
-        return " _|"
       else
-        return " "
+        return " _|"
       end
    end
 end
