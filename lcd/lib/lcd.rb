@@ -35,12 +35,12 @@ class LCD
     e.transpose.map { |lcd_digits_or_chars|  lcd_digits_or_chars.push("\n") }.join("")
   end
 
-  def display_lcd_digits_or_chars(individual_digit)
+  def display_lcd_digits_or_chars(individual_digit_or_char)
     lcdStates.map.with_index do |w, index|
       if w ==  "HORIZONTAL"
-        horizontal_segment(lcdDisplayData[individual_digit][index])
+        horizontal_segment(lcdDisplayData[individual_digit_or_char][index])
       elsif w == "VERTICAL"
-        vertical_segment(lcdDisplayData[individual_digit][index])
+        vertical_segment(lcdDisplayData[individual_digit_or_char][index])
       end
     end
   end
