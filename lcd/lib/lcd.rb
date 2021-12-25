@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class LCD
-  attr_reader :digit, :lcdStates, :lcdDisplayData
-  def initialize(number)
-    @digit = number
+  attr_reader :num_or_string, :lcdStates, :lcdDisplayData
+  def initialize(number_or_string)
+    @num_or_string = number_or_string
     @lcdStates = %w[HORIZONTAL VERTICAL VERTICAL]
     @lcdDisplayData = {
       0 => [1, 3, 4],
@@ -15,17 +15,24 @@ class LCD
       6 => [1, 2, 4],
       7 => [1, 1, 1],
       8 => [1, 4, 4],
-      9 => [1, 4, 5]
+      9 => [1, 4, 5],
+      "a" => [1, 4, 3],
+      "c" => [1, 6, 2],
+      "b" => [0, 2, 4]
     }
   end
 
   def render
-    individual_digits = digit.digits.reverse
-    e = individual_digits.map{ |i| display_lcd_digits(i) }
+    if num_or_string.is_a? Numeric
+     individual_digits_or_chars = num_or_string.digits.reverse
+    else
+      individual_digits_or_chars = num_or_string.chars
+    end
+    e = individual_digits_or_chars.map{ |i| display_lcd_digits_chars(i) }
     e.transpose.map { |lcd_digits|  lcd_digits.push("\n") }.join("")
   end
 
-  def display_lcd_digits(individual_digit)
+  def display_lcd_digits_chars(individual_digit)
     lcdStates.map.with_index do |w, index|
       if w ==  "HORIZONTAL"
         horizontal_segment(lcdDisplayData[individual_digit][index])
@@ -54,8 +61,10 @@ class LCD
         return "| |"
       when 4
         return "|_|"
-      else
+      when 5
         return " _|"
+      else
+        return "|  "
       end
    end
 end
