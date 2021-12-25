@@ -18,21 +18,24 @@ class LCD
       9 => [1, 4, 5],
       "a" => [1, 4, 3],
       "c" => [1, 6, 2],
-      "b" => [0, 2, 4]
+      "b" => [0, 2, 4],
+      "f" => [1, 2, 6],
+      "e" => [1, 2, 2],
+      "d" => [0, 5, 4]
     }
   end
 
   def render
     if num_or_string.is_a? Numeric
-     individual_digits_or_chars = num_or_string.digits.reverse
+     individual_number_or_chars = num_or_string.digits.reverse
     else
-      individual_digits_or_chars = num_or_string.chars
+      individual_number_or_chars = num_or_string.chars
     end
-    e = individual_digits_or_chars.map{ |i| display_lcd_digits_chars(i) }
-    e.transpose.map { |lcd_digits|  lcd_digits.push("\n") }.join("")
+    e = individual_number_or_chars.map{ |i| display_lcd_digits_or_chars(i) }
+    e.transpose.map { |lcd_digits_or_chars|  lcd_digits_or_chars.push("\n") }.join("")
   end
 
-  def display_lcd_digits_chars(individual_digit)
+  def display_lcd_digits_or_chars(individual_digit)
     lcdStates.map.with_index do |w, index|
       if w ==  "HORIZONTAL"
         horizontal_segment(lcdDisplayData[individual_digit][index])
