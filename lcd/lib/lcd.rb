@@ -51,14 +51,14 @@ class LCD
       when 1
         return " " + "_" * size[:width].to_i + " "
       else
-        return "   "* size[:width].to_i
+        return " "* size[:width].to_i + "  "
       end
    end
 
    def vertical_segment(type)
       case type
       when 1
-        return " "+ " |" * size[:width].to_i
+        return " "* size[:width].to_i + " |"
       when 2
         return "|_" + " " * size[:width].to_i
       when 3
@@ -66,7 +66,7 @@ class LCD
       when 4
         return "|" + "_" * size[:width].to_i + "|"
       when 5
-        return " _|" * size[:width].to_i
+        return " " + "_" * size[:width].to_i + "|"
       else
         return "|  " * size[:width].to_i
       end
