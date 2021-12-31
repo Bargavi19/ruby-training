@@ -49,7 +49,7 @@ class LCD
   def horizontal_segment(type)
       case type
       when 1
-        return  "_" * size[:width].to_i + " "
+        return " " + "_" * size[:width].to_i + " "
       else
         return "   "* size[:width].to_i
       end
@@ -64,7 +64,7 @@ class LCD
       when 3
         return "| |" * size[:width].to_i
       when 4
-        return "|_|" * size[:width].to_i
+        return "|" + "_" * size[:width].to_i + "|"
       when 5
         return " _|" * size[:width].to_i
       else
