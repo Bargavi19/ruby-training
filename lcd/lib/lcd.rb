@@ -61,13 +61,15 @@ class LCD
    def vertical_segment(type)
       case type
       when 1
-        return " "* no_of_lines[0] + " |" * no_of_lines[1]
+        return " "* no_of_lines[0] + " |" * no_of_lines[1] if no_of_lines[0] != 1
+        return "  |\n" * (no_of_lines[1] - 1) + "  |"
       when 2
         return "|_" + " " * no_of_lines[0]
       when 3
         return "| |"
       when 4
-        return "|" * no_of_lines[1] + "_" * no_of_lines[0]+ "|" * no_of_lines[1]
+        return "|" * no_of_lines[1] + "_" * no_of_lines[0]+ "|" * no_of_lines[1] if no_of_lines[0] != 1
+        return "| |\n" * (no_of_lines[1] - 1) + "|_|"
       when 5
         return " " + "_" * no_of_lines[0]+ "|"
       else
