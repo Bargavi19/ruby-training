@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 class LCD
-  attr_reader :num_or_string, :lcdStates, :lcdDisplayData, :no_of_horizontal_line, :no_of_vertical_line
-  def initialize(number_or_string, width = 1, height = 1)
+  attr_reader :num_or_string, :lcdStates, :lcdDisplayData, :no_of_lines
+  def initialize(number_or_string, width: 1, height: 1)
     @num_or_string = number_or_string
-    @no_of_horizontal_line = width
-    @no_of_vertical_line = height
+    @no_of_lines = [width, height]
     @lcdStates = %w[HORIZONTAL VERTICAL VERTICAL]
     @lcdDisplayData = {
       0 => [1, 3, 4],
@@ -25,6 +24,7 @@ class LCD
       "e" => [1, 2, 2],
       "d" => [0, 5, 4]
     }
+    print no_of_lines
   end
 
   def render
@@ -50,26 +50,28 @@ class LCD
   def horizontal_segment(type)
       case type
       when 1
-        return " " + "_" * no_of_horizontal_line[:width].to_i + " "
+        return " " + "_" * no_of_lines[0] + " "
       else
-        return " "* no_of_horizontal_line[:width].to_i + "  "* no_of_vertical_line
+        return " "* no_of_lines[1] if no_of_lines[1] != 1
+        return " "* no_of_lines[0] + "  " if no_of_lines[0] != 1
+        return "   "
       end
    end
 
    def vertical_segment(type)
       case type
       when 1
-        return " "* no_of_horizontal_line[:width].to_i + " |"
+        return " "* no_of_lines[0] + " |" * no_of_lines[1]
       when 2
-        return "|_" + " " * no_of_horizontal_line[:width].to_i
+        return "|_" + " " * no_of_lines[0]
       when 3
-        return "| |" * no_of_horizontal_line[:width].to_i
+        return "| |"
       when 4
-        return "|" * no_of_vertical_line + "_" * no_of_horizontal_line[:width].to_i + "|"* no_of_vertical_line
+        return "|" * no_of_lines[1] + "_" * no_of_lines[0]+ "|" * no_of_lines[1]
       when 5
-        return " " + "_" * no_of_horizontal_line[:width].to_i + "|"
+        return " " + "_" * no_of_lines[0]+ "|"
       else
-        return "|  " * no_of_horizontal_line[:width].to_i
+        return "|  " * no_of_lines[0]
       end
    end
 end
