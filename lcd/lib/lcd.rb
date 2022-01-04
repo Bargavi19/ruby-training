@@ -34,7 +34,12 @@ class LCD
       individual_number_or_chars = num_or_string.chars
     end
     e = individual_number_or_chars.map{ |i| display_lcd_digits_or_chars(i) }
-    e.transpose.map { |lcd_digits_or_chars|  lcd_digits_or_chars.push("\n") }.join("")
+    f = e.transpose.map do |lcd_digits_or_chars|
+      if @no_of_lines[0] != 1
+      lcd_digits_or_chars.push("\n")
+      end
+    end
+    f.join("")
   end
 
   def display_lcd_digits_or_chars(individual_digit_or_char)
@@ -61,14 +66,14 @@ class LCD
    def vertical_segment(type)
       case type
       when 1
-        return " "* no_of_lines[0] + " |" * no_of_lines[1] if no_of_lines[0] != 1
+        return " "* no_of_lines[0] + " |" * no_of_lines[1]
         return "  |\n" * (no_of_lines[1] - 1) + "  |"
       when 2
         return "|_" + " " * no_of_lines[0]
       when 3
         return "| |"
       when 4
-        return "|" * no_of_lines[1] + "_" * no_of_lines[0]+ "|" * no_of_lines[1] if no_of_lines[0] != 1
+        return "|" * no_of_lines[1] + "_" * no_of_lines[0]+ "|" * no_of_lines[1]
         return "| |\n" * (no_of_lines[1] - 1) + "|_|"
       when 5
         return " " + "_" * no_of_lines[0]+ "|"
