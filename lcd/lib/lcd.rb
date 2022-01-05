@@ -58,7 +58,7 @@ class LCD
         return " " + "_" * no_of_lines[0] + " "
       else
         return " "* no_of_lines[1] if no_of_lines[1] != 1
-        return " "* no_of_lines[0] + "  " if no_of_lines[0] != 1
+        return " "* no_of_lines[0] + "  "
         return "   "
       end
    end
