@@ -11,18 +11,18 @@ class LCD
 
   def render
     if number_or_string.is_a? (Numeric)
-      individual_number_or_chars = number_or_string.digits.reverse
+      individual_number_or_letter = number_or_string.digits.reverse
     else
-      individual_number_or_chars = number_or_string.chars
+      individual_number_or_letter = number_or_string.chars
     end
-    individual_digit_display = individual_number_or_chars.map { |i| display_lcd_digits_or_chars(i) }
-    individual_digit_display.transpose.map { |lcd_digits_or_chars| lcd_digits_or_chars.push("\n") }.join("")
+    individual_digit_display = individual_number_or_letter.map { |individual_number_or_letter| display_lcd_digits_or_chars(individual_number_or_letter) }
+    individual_digit_display.transpose.join("")
   end
 
   def display_lcd_digits_or_chars(individual_digit_or_char)
-    lcdStates = %w[HORIZONTAL VERTICAL HORIZONTAL VERTICAL]
-    lcdDisplayData = {
-      0 => [1, 3, 0, 4],
+    lcd_states = %w[HORIZONTAL VERTICAL HORIZONTAL VERTICAL HORIZONTAL VERTICAL]
+    lcd_display_data = {
+      0 => [1, 2, 0, 1, 1, 1],
       1 => [0, 1, 0, 1],
       2 => [1, 5, 0, 2],
       3 => [1, 5, 0, 5],
@@ -39,11 +39,15 @@ class LCD
       "e" => [1, 2, 0, 2],
       "d" => [0, 5, 0, 4]
     }
-    lcdStates.map.with_index do |w, index|
+    lcd_states.map.with_index do |w, index|
       if w ==  "HORIZONTAL"
-        horizontal_segment(lcdDisplayData[individual_digit_or_char][index])
-      elsif w == "VERTICAL"
-        vertical_segment(lcdDisplayData[individual_digit_or_char][index])
+        if index == 0
+           " " + horizontal_segment(lcd_display_data[individual_digit_or_char][index]) + " "
+        else
+           horizontal_segment(lcd_display_data[individual_digit_or_char][index])
+        end
+      else
+        vertical_segment(lcd_display_data[individual_digit_or_char][index])
       end
     end
   end
@@ -52,21 +56,19 @@ class LCD
     def horizontal_segment(type)
       case type
       when 1
-        " " + "_"+ " "
+        "_"
       else
-        " "
+        ""
       end
     end
 
    def vertical_segment(type)
       case type
       when 1
-        " |"
-      when 2
         "|"
-      when 3
+      when 2
         "| |"
-      when 5
+      else
         " " + "|"
       end
    end
