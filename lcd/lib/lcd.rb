@@ -10,7 +10,8 @@ class LCD
   end
 
   def render
-    individual_number_or_letter.map { |individual_number_or_letter| display_lcd_digits_or_chars(individual_number_or_letter) }.transpose.join
+    individual_digit_display = individual_number_or_letter.map { |individual_number_or_letter| display_lcd_digits_or_chars(individual_number_or_letter) }
+    individual_digit_display.transpose.map { |grouped_segments| grouped_segments.push("\n")}.join
   end
 
   def individual_number_or_letter
@@ -25,7 +26,7 @@ class LCD
     lcd_states = %w[line_one line_two line_three]
     lcd_states.map.with_index do |line_number, index|
       if line_number == "line_one"
-        " " + horizontal_segment(lcd_display_data[individual_digit_or_char][index]) + " " + "\n"
+        " " + horizontal_segment(lcd_display_data[individual_digit_or_char][index]) + " "
       else
         remaining_segments(line_number, individual_digit_or_char, index)
       end
@@ -34,9 +35,9 @@ class LCD
 
   def remaining_segments(line_number, digit, segment)
     if line_number == "line_two"
-      vertical_segment(lcd_display_data[digit][segment]) + horizontal_segment(lcd_display_data[digit][segment + 1]) + vertical_segment(lcd_display_data[digit][segment + 2]) + "\n"
+      vertical_segment(lcd_display_data[digit][segment]) + horizontal_segment(lcd_display_data[digit][segment + 1]) + vertical_segment(lcd_display_data[digit][segment + 2])
     else
-      vertical_segment(lcd_display_data[digit][segment + 2]) + horizontal_segment(lcd_display_data[digit][segment + 3]) + vertical_segment(lcd_display_data[digit][segment + 4]) + "\n"
+      vertical_segment(lcd_display_data[digit][segment + 2]) + horizontal_segment(lcd_display_data[digit][segment + 3]) + vertical_segment(lcd_display_data[digit][segment + 4])
     end
   end
 
@@ -69,7 +70,7 @@ class LCD
     6 => [1, 1, 1, 0, 1, 1, 1],
     7 => [1, 0, 0, 1, 0, 0, 1],
     8 => [1, 1, 1, 1, 1, 1, 1],
-    9 => [1, 4, 0, 5],
+    9 => [1, 1, 1, 0, 1, 1],
     "a" => [1, 4, 0, 3],
     "c" => [1, 6, 0, 2],
     "b" => [0, 2, 0, 4],
