@@ -10,19 +10,22 @@ class LCD
   end
 
   def render
-    if number_or_string.is_a? (Numeric)
-      individual_number_or_letter = number_or_string.digits.reverse
+    "#{line_one} * width\n" +
+    individual_number_or_letter.map { |individual_number_or_letter| display_lcd_digits_or_chars(individual_number_or_letter) }.transpose.join("")
+  end
+
+  def individual_number_or_letter
+    if number_or_string.is_a?(Numeric)
+      number_or_string.digits.reverse
     else
-      individual_number_or_letter = number_or_string.chars
+      number_or_string.chars
     end
-    individual_digit_display = individual_number_or_letter.map { |individual_number_or_letter| display_lcd_digits_or_chars(individual_number_or_letter) }
-    individual_digit_display.transpose.join("")
   end
 
   def display_lcd_digits_or_chars(individual_digit_or_char)
-    lcd_states = %w[HORIZONTAL VERTICAL HORIZONTAL VERTICAL HORIZONTAL VERTICAL]
+    lcd_states = %w[HORIZONTAL VERTICAL HORIZONTAL VERTICAL VERTICAL HORIZONTAL VERTICAL]
     lcd_display_data = {
-      0 => [1, 2, 0, 1, 1, 1],
+      0 => [1, 1, 0, 1, 1, 1, 1],
       1 => [0, 1, 0, 1],
       2 => [1, 5, 0, 2],
       3 => [1, 5, 0, 5],
@@ -58,7 +61,7 @@ class LCD
       when 1
         "_"
       else
-        ""
+        " "
       end
     end
 
@@ -66,10 +69,8 @@ class LCD
       case type
       when 1
         "|"
-      when 2
-        "| |"
       else
-        " " + "|"
+        " "
       end
    end
  end

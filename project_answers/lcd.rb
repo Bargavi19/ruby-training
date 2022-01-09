@@ -10,11 +10,12 @@ class LCD
   end
 
   def render
-    "#{render_line_one}\n"\
+    render_output = "#{render_line_one}\n"\
     "#{render_height_between_lines_one_and_two}"\
     "#{render_line_two}\n"\
     "#{render_height_between_lines_two_and_three}"\
     "#{render_line_three}\n"
+    print render_output
   end
 
   private
@@ -122,3 +123,5 @@ class LCD
     }
   end
 end
+i = LCD.new(0, width: 2, height: 4)
+i.render
