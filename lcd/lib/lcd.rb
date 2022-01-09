@@ -79,9 +79,7 @@ class LCD
     "d" => [0, 5, 0, 4]
     }
   end
-
-
- end
+end
 
 
 
