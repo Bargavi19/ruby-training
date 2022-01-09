@@ -10,7 +10,7 @@ class LCD
   end
 
   def render
-    individual_number_or_letter.map { |individual_number_or_letter| display_lcd_digits_or_chars(individual_number_or_letter) }.join
+    individual_number_or_letter.map { |individual_number_or_letter| display_lcd_digits_or_chars(individual_number_or_letter) }.transpose.join
   end
 
   def individual_number_or_letter
@@ -61,14 +61,14 @@ class LCD
   def lcd_display_data
     {
     0 => [1, 1, 0, 1, 1, 1, 1],
-    1 => [0, 1, 0, 1],
+    1 => [0, 0, 0, 1, 0, 0, 1],
     2 => [1, 5, 0, 2],
     3 => [1, 5, 0, 5],
-    4 => [0, 4, 0, 1],
+    4 => [0, 1, 1, 1, 0, 0, 1],
     5 => [1, 2, 0, 5],
     6 => [1, 1, 1, 0, 1, 1, 1],
-    7 => [1, 1, 0, 1],
-    8 => [1, 4, 0, 4],
+    7 => [1, 0, 0, 1, 0, 0, 1],
+    8 => [1, 1, 1, 1, 1, 1, 1],
     9 => [1, 4, 0, 5],
     "a" => [1, 4, 0, 3],
     "c" => [1, 6, 0, 2],
