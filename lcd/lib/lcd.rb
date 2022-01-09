@@ -44,9 +44,9 @@ class LCD
   def horizontal_segment(type)
     case type
     when 1
-      "_"
+      "_" * width
     else
-      " "
+      " " * width
     end
   end
 
