@@ -25,5 +25,9 @@ class Proxy
     end
   end
 
+  def called?(method_name)
+    messages.include?(method_name)
+  end
+
 end
 
