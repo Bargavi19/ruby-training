@@ -14,7 +14,8 @@ class Proxy
   end
 
   def respond_to?(method_name, include_private = false)
-    if method_name == @proxy_object.methods
+    proxy_method_names = @proxy_object.methods - Object.methods
+    if proxy_method_names.include?(method_name)
       true
     else
       super(method_name, include_private)
