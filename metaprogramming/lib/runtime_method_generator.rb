@@ -22,8 +22,13 @@ class RuntimeMethodGenerator
 
   def add_custom_method(new_method_name)
     self.class.define_method(new_method_name) do
-      new_method_name
+      if new_method_name == :predefined
+        :no_predefined
+      else
+        new_method_name
+      end
     end
+
   end
 
 end
