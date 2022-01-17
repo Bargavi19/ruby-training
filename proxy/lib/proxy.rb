@@ -31,11 +31,7 @@ class Proxy
   end
 
   def number_of_times_called(method_name)
-    if called?(method_name)
-      messages.count(method_name)
-    else
-      0
-    end
+    messages.count(method_name)
   end
 
 end
