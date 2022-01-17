@@ -2,6 +2,7 @@
 
 class Proxy
   attr_reader :messages
+
   def initialize( proxy_object )
     @proxy_object = proxy_object
     @messages = []
@@ -27,6 +28,10 @@ class Proxy
 
   def called?(method_name)
     messages.include?(method_name)
+  end
+
+  def number_of_times_called(method_name)
+    messages.count(method_name)
   end
 
 end
