@@ -20,4 +20,7 @@ class RuntimeMethodGenerator
     end
   end
 
+  def add_custom_method(foo)
+  end
+
 end
