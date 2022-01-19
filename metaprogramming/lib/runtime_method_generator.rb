@@ -28,7 +28,5 @@ class RuntimeMethodGenerator
         new_method_name
       end
     end
-
   end
-
 end
