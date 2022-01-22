@@ -98,22 +98,21 @@ RSpec.describe 'regular expressions' do
   end
 
   it 'also uses parentheses to capture content' do
-    expect('Gary, James'[/(\w+), (\w+)/, 1]).to eq('Gray')
+    expect('Gary, James'[/(\w+), (\w+)/, 1]).to eq('Gary')
     expect('Gary, James'[/(\w+), (\w+)/, 2]).to eq('James')
   end
 
   it 'has special variables to access captures' do
-    expect('Name: Gray, James'[/(\w+), (\w+)/]).to eq('Gray, James')
-    expect($1).to eq('Gray')
+    expect('Name: Gary, James'[/(\w+), (\w+)/]).to eq('Gary, James')
+    expect($1).to eq('Gary')
     expect($2).to eq('James')
   end
 
   it 'uses a | to offer alternatives for a group' do
     simpsons = /(Bart|Lisa|Maggie) Simpson/
-
     expect('Bart Simpson'[simpsons]).to eq('Bart Simpson')
     expect('Maggie Simpson'[simpsons]).to eq('Maggie Simpson')
-    expect('Montgomery Simpson'[simpsons]).to eq(nil)
+    expect('Homer Simpson'[simpsons]).to eq(nil)
   end
 
   it 'uses scan to find all instances that match a specific regex' do

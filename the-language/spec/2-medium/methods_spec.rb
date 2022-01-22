@@ -48,7 +48,8 @@ RSpec.describe 'methods in ruby' do
     args
   end
 
-  it 'is possible to create a methods with a variable number of args' do
+
+  it 'is possible to create a methods with a variable number of arguments' do
     expect(method_with_var_args.class).to eq(Array)
     expect(method_with_var_args).to eq([])
     expect(method_with_var_args(1)).to eq([1])
@@ -103,6 +104,7 @@ RSpec.describe 'methods in ruby' do
   end
 
   context 'methods on objects' do
+    # This simply means the variable `an_object` will be an instance of `MyClass`
     let(:an_object) { MyClass.new }
 
     it 'is possible to call methods on objects' do
