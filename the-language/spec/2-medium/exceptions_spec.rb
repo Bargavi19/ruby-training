@@ -23,7 +23,7 @@ RSpec.describe 'exceptions' do
     expect(e.is_a?(RuntimeError)).to eq(true),  'Should be a Runtime Error'
 
     # Think why the answer to this test is what it is?
-    expect(RuntimeError.ancestors.include?(StandardError)).to eq(__)
+    expect(RuntimeError.ancestors.include?(StandardError)).to eq(true)
 
     expect(e.message).to eq('Oops')
   end

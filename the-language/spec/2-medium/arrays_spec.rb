@@ -101,11 +101,11 @@ RSpec.describe 'arrays' do
     string_array = ['Welcome', 'to', 'the', 'joinery']
     simplified_string_array = %w[Welcome to the joinery]
 
-    expect(string_array == simplified_string_array).to eq(__)
+    expect(string_array == simplified_string_array).to eq(true)
 
     symbol_array = [:foo, :bar, :baz, :bay]
     simplified_symbol_array = %i[foo bar baz bay]
 
-    expect(symbol_array == simplified_symbol_array).to eq(__)
+    expect(symbol_array == simplified_symbol_array).to eq(true)
   end
 end
