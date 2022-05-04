@@ -1,4 +1,4 @@
-# Notice that we have define everything inside a Scopes module
+# Notice that we have defined EVERYTHING inside the Scopes module!
 module Scopes
   RSpec.describe 'scopes' do
     module Jim
@@ -18,9 +18,9 @@ module Scopes
     end
 
     it 'cannot access Otter in the current scope' do
-      # This fails because it assumes a Current Scope for our Otter which is what?
-      expect { Otter.new }.to raise_error(NameError)
-    end
+      # This fails because it assumes the current Scope for our Otter is what?
+      expect { Otter.new }.to raise_error(__)
+   end
 
     it 'can reference nested classes using the scope operator (::)' do
       alfie = Jim::Otter.new
@@ -39,8 +39,9 @@ module Scopes
       expect(Scopes::String == String).to eq(true)
     end
 
-    it 'creates new constants - our nested string is not identical to other' do
-      expect(String == 'HI'.class).to eq(false)
+
+    it 'creates new constants - our nested string is not identical to other String classes' do
+      expect(String == 'HI'.class).to eq(__)
     end
 
     it 'can use the prefix :: to access top-level classes' do
@@ -49,8 +50,9 @@ module Scopes
 
     PI = 3.1416
 
-    it 'defines constants with an upper case first letter' do
-      expect(PI).to eq(3.1416)
+
+    it 'is common to define a constant with an upper case first letter' do
+      expect(PI).to eq(__)
     end
 
     MyString = ::String

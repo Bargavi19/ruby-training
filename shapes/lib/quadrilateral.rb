@@ -28,6 +28,11 @@ def quadrilateral(a, b, c, d)
     end
   end
 end
+<<<<<<< HEAD
 # Error class used in invalid_quadrilateral_spec. No need to change this code.
+=======
+
+# Error class used in quadrilateral_spec. No need to change this code.
+>>>>>>> upstream/main
 class QuadrilateralError < StandardError
 end
